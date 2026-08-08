@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2"); // bringing mysql library into the project
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
-});
+}); // creating a connection to the database using the mysql library and environment variables for configuration
 
 connection.connect((err) => {
     if (err) {
@@ -15,6 +15,6 @@ connection.connect((err) => {
     }
 
     console.log("MySQL database connected successfully");
-});
+}); // connecting to the database and handling any errors that may occur during the connection process
 
-module.exports = connection;
+module.exports = connection; // exporting the connection object so that it can be used in other parts of the application

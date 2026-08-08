@@ -45,4 +45,82 @@
         LESSON: Always load .env before importing files that use process.env.
 
 
-## 📅 **07/08/2026** 
+## 📅 **07/08/2026** — Authentication Setup
+
+        - ## 🔐 Authentication Setup Progress
+
+        * Confirmed the existing `users` table is suitable for authentication:
+
+* `user_id`
+* `username`
+* `email`
+* `password_hash`
+* `created_at`
+
+* Confirmed required authentication dependencies are already installed:
+
+  * `bcrypt` → password hashing
+  * `jsonwebtoken` → JWT authentication
+  * `mysql2` → MySQL connection
+  * `dotenv` → environment variables
+  * `express` → API/server
+
+* Created `src/model/userModel.js`
+
+  * Connected the user model to the database using `db.js`.
+  * Added `findUserByEmail()` to find an existing user by email.
+  * Added `createUser()` to insert a new user into the `users` table.
+
+* Created `src/services/authService.js`
+
+  * Connected the authentication service to `userModel.js`.
+  * Added `registerUser()` for registration logic.
+  * Checks whether the email is already registered.
+  * Uses `bcrypt.hash()` to hash the user's password.
+  * Sends the hashed password to `createUser()` instead of storing the plain password.
+
+* Created `src/controllers/authController.js`
+
+  * Connected the controller to `authService.js`.
+  * Added `register()` to receive `username`, `email`, and `password` from `req.body`.
+  * Passes registration data to `authService.registerUser()`.
+  * Returns a success response or an error response.
+
+* Created `src/routes/authRoutes.js`
+
+  * File created but currently empty.
+  * Next step: connect the `/register` route to `authController.register()`.
+
+### Current Authentication Flow
+
+```text
+Client
+  ↓
+Route
+  ↓
+Controller
+  ↓
+Authentication Service
+  ↓
+User Model
+  ↓
+MySQL users table
+```
+
+### Current Status
+
+* ✅ Database connection working
+* ✅ User model created
+* ✅ Registration service created
+* ✅ Password hashing added
+* ✅ Authentication controller created
+* 🔄 Authentication routes next
+* ⏳ Registration API testing
+* ⏳ Login
+* ⏳ JWT token generation
+* ⏳ Authentication middleware
+* ⏳ Protecting job application routes
+* ⏳ Final authentication testing
+
+```
+```
