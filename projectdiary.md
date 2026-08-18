@@ -124,3 +124,59 @@ MySQL users table
 
 ```
 ```
+
+
+## 📅 **10/08/2026**
+    - revised what we did previously, understood what each file does and how the registeration request will eventuall;y travel i.e 
+
+    USER --> ROUTE --> CONTROLLER --> SERVICE --> MODEL --> DATABASE
+
+    and then answer comes back 
+
+    DATABASE --> MODEL --> SERVICE --> CONTROLLER --> USER
+
+    what we actually did today:
+  - ✅ Registration API tested successfully
+
+  what next? --> Logg in
+
+
+  ## 📅 **18/08/2026**
+
+  As of now, my company CRUD is implemented now i will test it
+
+  **Company CRUD — ✅ Implemented and tested**
+
+We created:
+
+companyModel.js
+companyService.js
+companyController.js
+companyRoutes.js
+
+and  implemented all five operations:
+
+POST   /companies
+GET    /companies
+GET    /companies/:id
+PUT    /companies/:id
+DELETE /companies/:id
+
+**Job Application CRUD — ✅ Implemented and fully tested**
+
+This is the work we just completed.
+
+We created:
+
+src/
+├── model/
+│   └── jobApplicationModel.js
+│
+├── services/
+│   └── jobApplicationService.js
+│
+├── controllers/
+│   └── jobApplicationController.js
+│
+└── routes/
+    └── jobApplicationRoutes.js
