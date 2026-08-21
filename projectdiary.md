@@ -180,3 +180,19 @@ src/
 │
 └── routes/
     └── jobApplicationRoutes.js
+
+
+  **19/08/2026**
+
+innitiated React for frontend also folder structure.
+
+
+**20/08/2026**
+
+    - configured React Router
+    - basic frontend and pages i.e dashboard, login, register, companies, applications
+
+**21/08/2026**
+
+  - right now each page works independently so we create Navbar for a shared layout
+  - next step : AXIOS
