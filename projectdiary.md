@@ -5,7 +5,24 @@
 🐛 Bug
 💥 Crash / Failure
 ⛔ Connection failed
-
+🎉 — Milestone / major achievement
+✅ — Completed task
+🚀 — New feature / progress
+🔧 — Bug fix
+🐛 — Bug discovered
+🛠️ — Development work
+🔐 — Authentication/security
+🗄️ — Database work
+🌐 — Frontend/backend connection
+💻 — Coding
+🔌 — API integration
+🧪 — Testing
+📚 — Learning
+⚠️ — Problem/challenge
+💡 — New idea
+🎯 — Goal achieved
+📌 — Important note
+🔥 — Major progress
 ---
 ## 📅 **06/08/2026** — Backend Setup & MySQL Connection Debugging
     * PROJECT SETUP DAY:
@@ -196,3 +213,33 @@ innitiated React for frontend also folder structure.
 
   - right now each page works independently so we create Navbar for a shared layout
   - next step : AXIOS
+  - Created the Login.jsx page with email and password input fields.
+Created/configured src/services/api.js using Axios with the backend URL http://localhost:5000.
+
+- Connected the login form to the backend endpoint POST /api/auth/login.
+Added CORS to the Express backend so the frontend can communicate with the backend. 🎉
+
+
+**22/08/2026**
+
+- added useNavigate hook to navigate between the pages .. frm login to back to dashboard page
+- Successfully connected the applications backend to the React frontend and displayed real application data in the browser. Fixed the issue by storing the API response in React state and rendering it with .map().
+
+**25/08/2026**
+
+
+- WHAT I BUILT? 
+A form for submitting the  application
+
+- WHY?
+to submit application
+
+- WHAT I LEARNT?
+react-hook-form library, creating the form and {register} 
+
+
+- PROBLEM?
+
+- HOW I SOLVED IT?
+
+

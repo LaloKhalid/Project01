@@ -1,6 +1,6 @@
-// Load the variables from the .env file
-// Example: DATABASE_URL, JWT_SECRET, etc.
-require("dotenv").config();
+
+require("dotenv").config(); // Load the variables from the .env file
+
 
 const express = require("express");
 const cors = require("cors"); // Import CORS
@@ -12,8 +12,8 @@ const jobApplicationRoutes = require("./routes/jobApplicationRoutes");
 
 const app = express();
 
-// Enable CORS so the React frontend can communicate with this backend
-app.use(cors());
+
+app.use(cors());// Enable CORS so the React frontend can communicate with this backend
 
 // Tell Express to understand JSON data sent from the frontend
 app.use(express.json());
