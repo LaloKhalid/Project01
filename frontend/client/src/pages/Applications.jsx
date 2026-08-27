@@ -40,6 +40,16 @@ function Applications() {
     }
   };
 
+  const deleteApplication = async (applicationId) => {
+  try {
+    await api.delete(`/api/applications/${applicationId}`);
+
+    console.log("Application deleted!");
+  } catch (error) {
+    console.error("Error deleting application:", error);
+  }
+};
+
   return (
     <div>
       <h1>Applications</h1>
@@ -91,6 +101,9 @@ function Applications() {
           <h2>{application.company_name}</h2>
           <p>{application.job_title}</p>
           <p>{application.date_applied}</p>
+          <button onClick={() => deleteApplication(application.application_id)}>
+            DELETE
+          </button>
         </div>
       ))}
     </div>

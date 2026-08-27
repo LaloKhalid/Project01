@@ -243,3 +243,21 @@ react-hook-form library, creating the form and {register}
 - HOW I SOLVED IT?
 
 
+**26/08/2026**
+
+- Today we are creating registeration form to register a user
+  - and what was the problem
+
+
+What was the problem?
+The problem was that the user/password we were trying to log in with did not match a valid user in the database.
+
+We tested everything step by step and found that the backend login system itself was working. We created a new user, debugger@example.com, with a properly hashed password, and that login worked successfully from both Postman and React.
+
+So the main problem was the test login credentials/user data, not the React login code or backend authentication code.
+
+
+**27/08/2026** 
+
+
+

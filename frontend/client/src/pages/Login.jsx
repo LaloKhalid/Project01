@@ -10,7 +10,15 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+
+        
         try {
+
+
+            console.log("FRONTEND EMAIL:", JSON.stringify(email));
+console.log("FRONTEND PASSWORD LENGTH:", password.length);
+
             const response = await api.post("/api/auth/login", {
                 email,
                 password
