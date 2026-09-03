@@ -1,0 +1,21 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 8px;
+}
+
+.dashboard-header p {
+  color: rgba(13, 12, 34, 0.6);
+  font-size: 15px;
+}

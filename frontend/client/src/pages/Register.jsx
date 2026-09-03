@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 
+
 function Register() {
     const { register, handleSubmit } = useForm();
 

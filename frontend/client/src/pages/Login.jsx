@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
+
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -47,7 +48,7 @@ console.log("FRONTEND PASSWORD LENGTH:", password.length);
         <div>
             <h1>Login</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="login-form">
                 <div>
                     <label>Email</label>
                     <input
@@ -66,7 +67,9 @@ console.log("FRONTEND PASSWORD LENGTH:", password.length);
                     />
                 </div>
 
-                <button type="submit">Login</button>
+                <button className="btn" type="submit">
+                    Login
+                </button>
             </form>
         </div>
     );

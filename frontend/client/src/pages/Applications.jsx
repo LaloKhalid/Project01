@@ -3,13 +3,15 @@ import { useForm } from "react-hook-form";
 import api from "../services/api";
 
 function Applications() {
-  // Get existing applications
   const [applications, setApplications] = useState([]);
 
-  // React Hook Form
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+  } = useForm();
 
-  // Get applications from API
+  // Get existing applications
   useEffect(() => {
     const fetchApplications = async () => {
       try {
@@ -26,87 +28,215 @@ function Applications() {
     fetchApplications();
   }, []);
 
-  // Submit NEW application
+  // Submit new application
   const onSubmit = async (data) => {
     try {
       console.log("Form data:", data);
 
-      await api.post("/api/applications", data);
+      const response = await api.post("/api/applications", data);
 
       console.log("Application saved!");
 
+      if (response.data.result) {
+        setApplications((current) => [
+          ...current,
+          response.data.result,
+        ]);
+      }
+
+      reset();
     } catch (error) {
       console.error("Error saving application:", error);
     }
   };
 
+  // Delete application
   const deleteApplication = async (applicationId) => {
-  try {
-    await api.delete(`/api/applications/${applicationId}`);
+    try {
+      await api.delete(`/api/applications/${applicationId}`);
 
-    console.log("Application deleted!");
-  } catch (error) {
-    console.error("Error deleting application:", error);
-  }
-};
+      console.log("Application deleted!");
+
+      setApplications((current) =>
+        current.filter(
+          (application) =>
+            application.application_id !== applicationId
+        )
+      );
+    } catch (error) {
+      console.error("Error deleting application:", error);
+    }
+  };
 
   return (
-    <div>
-      <h1>Applications</h1>
+    <main className="applications-page">
 
-      {/* NEW APPLICATION FORM */}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* PAGE HEADER */}
+      <header className="page-header">
+        <h1>Applications</h1>
+        <p>Keep track of your job applications.</p>
+      </header>
 
-        <input
-          placeholder="Company"
-          {...register("company_name")}
-        />
+      {/* APPLICATION FORM */}
+      <section className="application-container">
+        <form
+          className="application-form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="form-group">
+            <label htmlFor="company_name">
+              Company
+            </label>
 
-        <input
-          placeholder="Job title"
-          {...register("job_title")}
-        />
+            <input
+              id="company_name"
+              type="text"
+              placeholder="Enter company name"
+              {...register("company_name")}
+            />
+          </div>
 
-        <input
-          type="date"
-          {...register("date_applied")}
-        />
+          <div className="form-group">
+            <label htmlFor="job_title">
+              Job Title
+            </label>
 
-        <input
-          placeholder="Contact person"
-          {...register("contact_person")}
-        />
+            <input
+              id="job_title"
+              type="text"
+              placeholder="Enter job title"
+              {...register("job_title")}
+            />
+          </div>
 
-        <input
-          placeholder="Status"
-          {...register("status")}
-        />
+          <div className="form-group">
+            <label htmlFor="date_applied">
+              Date Applied
+            </label>
 
-        <textarea
-          placeholder="Notes"
-          {...register("notes")}
-        />
+            <input
+              id="date_applied"
+              type="date"
+              {...register("date_applied")}
+            />
+          </div>
 
-        <button type="submit">
-          Save Application
-        </button>
+          <div className="form-group">
+            <label htmlFor="status">
+              Status
+            </label>
 
-      </form>
+            <input
+              id="status"
+              type="text"
+              placeholder="e.g. Applied, Interview, Rejected"
+              {...register("status")}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="notes">
+              Notes
+            </label>
+
+            <textarea
+              id="notes"
+              placeholder="Add any notes about this application..."
+              {...register("notes")}
+            />
+          </div>
+
+          <button
+            className="primary-btn"
+            type="submit"
+          >
+            Save Application
+          </button>
+        </form>
+      </section>
 
       {/* EXISTING APPLICATIONS */}
-      <h2>My Applications</h2>
+      <section className="applications-list">
+        <div className="section-header">
+          <h2>My Applications</h2>
 
-      {applications.map((application) => (
-        <div key={application.application_id}>
-          <h2>{application.company_name}</h2>
-          <p>{application.job_title}</p>
-          <p>{application.date_applied}</p>
-          <button onClick={() => deleteApplication(application.application_id)}>
-            DELETE
-          </button>
+          <p>
+            {applications.length}{" "}
+            {applications.length === 1
+              ? "application"
+              : "applications"}
+          </p>
         </div>
-      ))}
-    </div>
+
+        {applications.length === 0 ? (
+          <div className="empty-state">
+            <h3>No applications yet</h3>
+
+            <p>
+              Add your first job application using the form above.
+            </p>
+          </div>
+        ) : (
+          <div className="application-grid">
+            {applications.map((application) => (
+              <article
+                className="application-card"
+                key={application.application_id}
+              >
+                <div className="application-card-header">
+                  <div>
+                    <h3>{application.company_name}</h3>
+                    <p>{application.job_title}</p>
+                  </div>
+
+                  <span className="application-status">
+                    {application.status}
+                  </span>
+                </div>
+
+                <div className="application-details">
+                  <div>
+                    <span className="detail-label">
+                      Date Applied
+                    </span>
+
+                    <span className="detail-value">
+                      {application.date_applied}
+                    </span>
+                  </div>
+
+                  {application.notes && (
+                    <div>
+                      <span className="detail-label">
+                        Notes
+                      </span>
+
+                      <span className="detail-value">
+                        {application.notes}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="application-card-footer">
+                  <button
+                    className="delete-btn"
+                    type="button"
+                    onClick={() =>
+                      deleteApplication(
+                        application.application_id
+                      )
+                    }
+                  >
+                    Delete
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
 
