@@ -1,10 +1,5 @@
-.dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
+.dashboard-page {
+  padding: 32px;
 }
 
 .dashboard-header {
@@ -12,10 +7,66 @@
 }
 
 .dashboard-header h1 {
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+  font-size: 32px;
 }
 
 .dashboard-header p {
-  color: rgba(13, 12, 34, 0.6);
+  margin: 0;
+  color: #666;
+}
+
+.dashboard-summary {
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  width: 220px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.summary-card h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: #666;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.dashboard-applications h2 {
+  margin-bottom: 16px;
+}
+
+.applications-table-wrapper {
+  overflow-x: auto;
+}
+
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.applications-table th,
+.applications-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.applications-table th {
+  font-size: 14px;
+  color: #666;
+  background: #f9fafb;
+}
+
+.applications-table td {
   font-size: 15px;
 }
