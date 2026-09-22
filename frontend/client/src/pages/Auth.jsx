@@ -59,6 +59,7 @@ function Auth() {
             console.log("REGISTER FORM DATA:", data);
 
             await api.post("/api/auth/register", {
+                username: data.name,
                 email: data.email,
                 password: data.password,
             });
@@ -117,10 +118,12 @@ function Auth() {
                         )}
 
                         <form onSubmit={handleSubmit(handleLogin)}>
-                            <div className="form-group">
-                                <label htmlFor="login-email">
-                                    Email
-                                </label>
+
+                        
+                        <div className="form-group">
+                            <label htmlFor="login-email">
+                                Email
+                            </label>
 
                                 <input
                                     id="login-email"
@@ -196,6 +199,26 @@ function Auth() {
                         )}
 
                         <form onSubmit={handleSubmit(handleRegister)}>
+
+<div className="form-group">
+                            <label htmlFor="name">
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                type="text"
+                                placeholder="Enter your name"
+                                {...register("name", {
+                                    required: "Name is required",
+                                })}
+                            />
+                            {errors.name && (
+                                <span className="field-error">
+                                    {errors.name.message}
+                                </span>
+                            )}
+                        </div>
+
                             <div className="form-group">
                                 <label htmlFor="register-email">
                                     Email
