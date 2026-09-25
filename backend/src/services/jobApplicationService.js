@@ -7,6 +7,7 @@ function createApplication(
     dateApplied,
     contactPerson,
     status,
+    location,
     notes,
     callback
 ) {
@@ -17,6 +18,7 @@ function createApplication(
         dateApplied,
         contactPerson,
         status,
+        location,
         notes,
         callback
     );
@@ -42,6 +44,7 @@ function updateApplication(
     dateApplied,
     contactPerson,
     status,
+    location,
     notes,
     callback
 ) {
@@ -53,6 +56,7 @@ function updateApplication(
         dateApplied,
         contactPerson,
         status,
+        location,
         notes,
         callback
     );

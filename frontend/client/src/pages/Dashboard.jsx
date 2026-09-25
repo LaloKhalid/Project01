@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import "./Dashboard.css";
+import LocationFilter from "../components/LocationFilter";
+
 
 function Dashboard() {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("All Locations");
+
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -31,6 +35,16 @@ function Dashboard() {
   if (error) {
     return <p>{error}</p>;
   }
+console.log("Selected location:", selectedLocation);
+
+const filteredApplications = applications.filter((application) => {
+  if (selectedLocation === "All Locations") {
+    return true;
+  }
+
+  return application.location === selectedLocation;
+});
+
 
   return (
     <main className="dashboard-page">
@@ -43,6 +57,13 @@ function Dashboard() {
         <div className="summary-card">
           <h2>Total Applied Jobs</h2>
           <p>{applications.length}</p>
+
+        </div>
+
+        <div>
+          <LocationFilter 
+          selectedLocation={selectedLocation}
+          setSelectedLocation={setSelectedLocation}/>
         </div>
       </section>
 
@@ -58,16 +79,19 @@ function Dashboard() {
                 <tr>
                   <th>Company</th>
                   <th>Job Title</th>
+                  <th>Location</th>
                   <th>Date Applied</th>
                   <th>Status</th>
                 </tr>
               </thead>
 
               <tbody>
-                {applications.map((application) => (
+
+                {filteredApplications.map((application) => (
                   <tr key={application.application_id}>
                     <td>{application.company_name}</td>
                     <td>{application.job_title}</td>
+                    <td>{application.location}</td>
                     <td>{application.date_applied}</td>
                     <td>{application.status}</td>
                   </tr>

@@ -6,6 +6,7 @@ import Applications from "./pages/Applications";
 import Companies from "./pages/Companies";
 import MainLayout from "./layouts/MainLayout";
 
+
 function App() {
   return (
     <BrowserRouter>

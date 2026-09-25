@@ -19,9 +19,12 @@ function Applications() {
 
         console.log("Applications:", response.data);
 
+        console.log("Applications:", response.data);
+
         setApplications(response.data.result);
       } catch (error) {
         console.error("Error fetching applications:", error);
+        
       }
     };
 
@@ -35,13 +38,21 @@ function Applications() {
 
       const response = await api.post("/api/applications", data);
 
-      console.log("Application saved!");
+      console.log("Application saved!", response.data);
 
+      // Add the newly created application if the backend returns it
       if (response.data.result) {
         setApplications((current) => [
           ...current,
           response.data.result,
         ]);
+      } else {
+        // Refresh applications from the backend
+        const updatedApplications = await api.get(
+          "/api/applications"
+        );
+
+        setApplications(updatedApplications.data.result);
       }
 
       reset();
@@ -83,6 +94,8 @@ function Applications() {
           className="application-form"
           onSubmit={handleSubmit(onSubmit)}
         >
+
+          {/* COMPANY */}
           <div className="form-group">
             <label htmlFor="company_name">
               Company
@@ -96,6 +109,7 @@ function Applications() {
             />
           </div>
 
+          {/* JOB TITLE */}
           <div className="form-group">
             <label htmlFor="job_title">
               Job Title
@@ -109,6 +123,7 @@ function Applications() {
             />
           </div>
 
+          {/* DATE APPLIED */}
           <div className="form-group">
             <label htmlFor="date_applied">
               Date Applied
@@ -121,6 +136,21 @@ function Applications() {
             />
           </div>
 
+          {/* LOCATION */}
+          <div className="form-group">
+            <label htmlFor="location">
+              Location
+            </label>
+
+            <input
+              id="location"
+              type="text"
+              placeholder="Enter location"
+              {...register("location")}
+            />
+          </div>
+
+          {/* STATUS */}
           <div className="form-group">
             <label htmlFor="status">
               Status
@@ -134,6 +164,7 @@ function Applications() {
             />
           </div>
 
+          {/* NOTES */}
           <div className="form-group">
             <label htmlFor="notes">
               Notes
@@ -146,6 +177,7 @@ function Applications() {
             />
           </div>
 
+          {/* SUBMIT */}
           <button
             className="primary-btn"
             type="submit"
@@ -157,6 +189,7 @@ function Applications() {
 
       {/* EXISTING APPLICATIONS */}
       <section className="applications-list">
+
         <div className="section-header">
           <h2>My Applications</h2>
 
@@ -178,35 +211,66 @@ function Applications() {
           </div>
         ) : (
           <div className="application-grid">
+
             {applications.map((application) => (
               <article
                 className="application-card"
                 key={application.application_id}
               >
+
+                {/* CARD HEADER */}
                 <div className="application-card-header">
+
                   <div>
-                    <h3>{application.company_name}</h3>
-                    <p>{application.job_title}</p>
+                    <h3>
+                      {application.company_name}
+                    </h3>
+
+                    <p>
+                      {application.job_title}
+                    </p>
                   </div>
 
-                  <span className="application-status">
-                    {application.status}
-                  </span>
+                  {application.status && (
+                    <span className="application-status">
+                      {application.status}
+                    </span>
+                  )}
+
                 </div>
 
+                {/* CARD DETAILS */}
                 <div className="application-details">
-                  <div>
-                    <span className="detail-label">
-                      Date Applied
-                    </span>
 
-                    <span className="detail-value">
-                      {application.date_applied}
-                    </span>
-                  </div>
+                  {/* DATE APPLIED */}
+                  {application.date_applied && (
+                    <div className="application-detail">
+                      <span className="detail-label">
+                        Date Applied
+                      </span>
 
+                      <span className="detail-value">
+                        {application.date_applied}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* LOCATION */}
+                  {application.location && (
+                    <div className="application-detail">
+                      <span className="detail-label">
+                        Location
+                      </span>
+
+                      <span className="detail-value">
+                        {application.location}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* NOTES */}
                   {application.notes && (
-                    <div>
+                    <div className="application-detail">
                       <span className="detail-label">
                         Notes
                       </span>
@@ -216,9 +280,12 @@ function Applications() {
                       </span>
                     </div>
                   )}
+
                 </div>
 
+                {/* CARD FOOTER */}
                 <div className="application-card-footer">
+
                   <button
                     className="delete-btn"
                     type="button"
@@ -230,11 +297,15 @@ function Applications() {
                   >
                     Delete
                   </button>
+
                 </div>
+
               </article>
             ))}
+
           </div>
         )}
+
       </section>
     </main>
   );

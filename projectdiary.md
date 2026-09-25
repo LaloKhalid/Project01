@@ -267,3 +267,27 @@ Next, we'll start styling the actual layout and components of your project, step
 
 
 
+<div className="application-details">
+  <div>
+    <span className="detail-label">
+      Date Applied
+    </span>
+
+    <span className="detail-value">
+      {application.date_applied}
+    </span>
+  </div>
+
+  {application.location && (
+    <div>
+      <span className="detail-label">
+        Location
+      </span>
+
+      <span className="detail-value">
+        {application.location}
+      </span>
+    </div>
+  )}
+
+  {application.notes && (
