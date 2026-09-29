@@ -8,6 +8,7 @@ function createApplication(
     contactPerson,
     status,
     location,
+    job_source,
     notes,
     callback
 ) {
@@ -19,6 +20,7 @@ function createApplication(
         contactPerson,
         status,
         location,
+        job_source,
         notes,
         callback
     );
@@ -45,6 +47,7 @@ function updateApplication(
     contactPerson,
     status,
     location,
+    job_source,
     notes,
     callback
 ) {
@@ -57,6 +60,7 @@ function updateApplication(
         contactPerson,
         status,
         location,
+        job_source,
         notes,
         callback
     );

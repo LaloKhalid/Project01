@@ -19,12 +19,9 @@ function Applications() {
 
         console.log("Applications:", response.data);
 
-        console.log("Applications:", response.data);
-
         setApplications(response.data.result);
       } catch (error) {
         console.error("Error fetching applications:", error);
-        
       }
     };
 
@@ -147,6 +144,20 @@ function Applications() {
               type="text"
               placeholder="Enter location"
               {...register("location")}
+            />
+          </div>
+
+           {/* JOB SOURCE */}
+          <div className="form-group">
+            <label htmlFor="job_source">
+              Job Source
+            </label>
+
+            <input
+              id="job_source"
+              type="text"
+              placeholder="Enter job source"
+              {...register("job_source")}
             />
           </div>
 
@@ -312,3 +323,4 @@ function Applications() {
 }
 
 export default Applications;
+

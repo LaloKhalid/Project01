@@ -8,6 +8,7 @@ function createApplication(req, res) {
         contact_person,
         status,
         location,
+        job_source,
         notes
     } = req.body || {};
 
@@ -27,6 +28,7 @@ function createApplication(req, res) {
         contact_person || null,
         status || null,
         location || null,
+        job_source || null,
         notes || null,
         (err, result) => {
             if (err) {
@@ -100,6 +102,7 @@ function updateApplication(req, res) {
         contact_person,
         status,
         location,
+        job_source,
         notes
     } = req.body || {};
 
@@ -117,6 +120,8 @@ function updateApplication(req, res) {
         date_applied || null,
         contact_person || null,
         status || null,
+        location || null,
+        job_source || null, 
         notes || null,
         (err, result) => {
             if (err) {

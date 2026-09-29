@@ -8,13 +8,15 @@ function createApplication(
     contactPerson,
     status,
     location,
+    job_source,
+
     notes,
     callback
 ) {
     const sql = `
         INSERT INTO job_applications
-        (user_id, company_name, job_title, date_applied, contact_person, status, location, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        (user_id, company_name, job_title, date_applied, contact_person, status, location, job_source, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     db.query(
@@ -27,7 +29,8 @@ function createApplication(
             contactPerson,
             status,
             location,
-            notes
+            job_source,
+            notes,
         ],
         (err, result) => {
             if (err) {
@@ -81,6 +84,7 @@ function updateApplication(
     contactPerson,
     status,
     location,
+    job_source,
     notes,
     callback
 ) {
@@ -92,6 +96,7 @@ function updateApplication(
             contact_person = ?,
             status = ?,
             location = ?,
+            job_source = ?,
             notes = ?
         WHERE application_id = ? AND user_id = ?
     `;
@@ -105,6 +110,7 @@ function updateApplication(
             contactPerson,
             status,
             location,
+            job_source,
             notes,
             applicationId,
             userId
