@@ -17,7 +17,7 @@ function Navbar() {
         <button onClick={handleLogout} className="navbar-logout-btn">
           Logout
         </button>
-        <NavLink to="/auth">Auth</NavLink>
+        <NavLink to="/auth">Login</NavLink>
       </div>
     </nav>
   );

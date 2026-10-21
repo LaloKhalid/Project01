@@ -120,18 +120,7 @@ function Applications() {
             />
           </div>
 
-          {/* DATE APPLIED */}
-          <div className="form-group">
-            <label htmlFor="date_applied">
-              Date Applied
-            </label>
-
-            <input
-              id="date_applied"
-              type="date"
-              {...register("date_applied")}
-            />
-          </div>
+       
 
           {/* LOCATION */}
           <div className="form-group">
@@ -253,18 +242,7 @@ function Applications() {
                 {/* CARD DETAILS */}
                 <div className="application-details">
 
-                  {/* DATE APPLIED */}
-                  {application.date_applied && (
-                    <div className="application-detail">
-                      <span className="detail-label">
-                        Date Applied
-                      </span>
-
-                      <span className="detail-value">
-                        {application.date_applied}
-                      </span>
-                    </div>
-                  )}
+         
 
                   {/* LOCATION */}
                   {application.location && (
@@ -278,6 +256,11 @@ function Applications() {
                       </span>
                     </div>
                   )}
+
+                  {/* DATE APPLIED */}
+                  {application.date_applied && ( <div className="application-detail"> <span className="detail-label"> Date Applied </span>
+
+<span className="detail-value"> {String(application.date_applied).slice(0, 10)} </span> </div> )}
 
                   {/* NOTES */}
                   {application.notes && (

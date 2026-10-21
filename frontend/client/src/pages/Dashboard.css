@@ -70,3 +70,295 @@
 .applications-table td {
   font-size: 15px;
 }
+
+
+
+/* =========================================
+   DASHBOARD SUMMARY
+   ========================================= */
+
+.dashboard-summary {
+  margin-bottom: 36px;
+}
+
+.summary-card {
+  padding: 24px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(13, 12, 34, 0.04);
+}
+
+.summary-card h2 {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.summary-card p {
+  margin-top: 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-sage-dark);
+}
+
+/* =========================================
+   APPLICATIONS SECTION HEADER
+   ========================================= */
+
+.applications-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.applications-section-header h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.applications-section-header p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.applications-count {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================================
+   FILTER & SORT TOOLBAR
+   ========================================= */
+
+.application-toolbar {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  margin-bottom: 24px;
+  padding: 20px;
+
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+}
+
+/* Individual filter groups */
+
+.application-toolbar .filter-group {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.application-toolbar .filter-group > label {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Dropdown styling */
+
+.application-toolbar select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 36px 10px 12px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background-color: var(--color-white);
+  color: var(--color-text);
+
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.application-toolbar select:hover {
+  border-color: var(--color-sage);
+}
+
+.application-toolbar select:focus {
+  outline: none;
+  border-color: var(--color-sage);
+  box-shadow: var(--shadow-input-focus);
+}
+
+/* Clear filters */
+
+.application-toolbar .clear-filters-btn,
+.applications-empty-state .clear-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: flex-end;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 14px;
+
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+
+  background: var(--color-white);
+  color: var(--color-sage-dark);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition: background-color 0.2s ease;
+}
+
+.application-toolbar .clear-filters-btn:hover,
+.applications-empty-state .clear-filters-btn:hover {
+  background: #f1f5ef;
+}
+
+/* =========================================
+   TABLE WRAPPER
+   ========================================= */
+
+.applications-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+}
+
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.applications-table th {
+  padding: 16px 18px;
+
+  background: #f7f9f6;
+  border-bottom: 1px solid var(--color-border-light);
+
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.applications-table td {
+  padding: 18px;
+
+  border-bottom: 1px solid var(--color-border-light);
+
+  color: var(--color-text);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.applications-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.applications-table tbody tr:hover {
+  background: #fafbf9;
+}
+
+/* Status badge */
+
+.applications-table .application-status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 10px;
+  border-radius: 20px;
+
+  background: var(--color-sage-light);
+  color: var(--color-sage-dark);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.applications-empty-state {
+  padding: 48px 24px;
+  text-align: center;
+
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+}
+
+.applications-empty-state h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.applications-empty-state p {
+  margin-bottom: 18px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.applications-empty-state .clear-filters-btn {
+  align-self: auto;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+  .dashboard-summary {
+    margin-bottom: 28px;
+  }
+
+  .applications-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .application-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .application-toolbar .filter-group {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .application-toolbar .clear-filters-btn {
+    align-self: flex-start;
+  }
+
+  .applications-table th,
+  .applications-table td {
+    padding: 14px;
+  }
+}
